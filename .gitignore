@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+data/dataset-metadata.json
+.DS_Store

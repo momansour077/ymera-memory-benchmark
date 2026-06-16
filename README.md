@@ -14,6 +14,11 @@ paper, the headline results, and a short reproducible analysis of the published
 effect sizes. It contains **no source code, no raw run data, and no credentials** —
 only material already public in the Zenodo preprint (CC-BY-4.0).
 
+![YMERA effect sizes](ymera_effect_sizes.png)
+
+*Memory **presence** produces enormous effect sizes (blue, d ≈ 5–6); memory
+**mechanism** (bio vs. flat, red) does not separate (d = 0.14).*
+
 ---
 
 ## What the study found (in one line)
@@ -33,6 +38,21 @@ difference at 7B scale** — an honest positive *and* negative result.
 - **Temporal isolation.** Agents are guarded against using future data they could
   not have had at decision time — a genuine problem for AI in regulated finance and
   healthcare.
+
+## Abstract (verbatim from the paper)
+
+> We introduce YMERA, a multi-agent simulation framework in which 21 AI executive
+> agents deliberate over strategic, operational, financial, and risk decisions using a
+> historical economic data surface spanning 1925–2024. In the current benchmarked
+> experiments, we evaluate the 1925–1934 decade and compare three memory conditions:
+> bio-inspired memory, flat retrieval memory, and no memory. In the canonical
+> three-condition run (n=78 per arm), bio-memory and flat retrieval each substantially
+> outperform no memory (d=5.30 and d=4.94, p<1e-58), while remaining statistically
+> indistinguishable from each other (d=0.14, p=0.390). A larger full-era paired
+> confirmation under an explicit crisis-continuation protocol reproduces the same result
+> at greater magnitude (n=212/244, d=6.28, p=2.10e-195)... We conclude that memory
+> presence strongly improves organizational AI decision quality, while bio-inspired
+> mechanism complexity yields no broad advantage over flat retrieval at this model scale.
 
 ## Method (summary)
 
@@ -73,6 +93,17 @@ runs — the point is a transparent, citable view of the effect sizes in the pap
 The YMERA simulation **codebase is deliberately excluded** — it contains operational
 credentials and is kept private. This repo is the scientific record and a clean,
 recruiter/client-facing summary. For the full paper, see the DOI above.
+
+## Skills this demonstrates
+
+Directly relevant to LLM evaluation, AI-data, and red-teaming roles:
+
+- **Rigorous LLM evaluation** — controlled multi-condition ablation, effect sizes,
+  significance testing, and an honestly reported null result.
+- **Multi-agent LLM systems** — designing and running a 21-agent deliberation framework.
+- **Experimental hygiene** — temporal-isolation guards; real-world calibration against
+  the Philadelphia Fed Survey of Professional Forecasters.
+- **Reproducible reporting** — public dataset + runnable analysis + citable DOI.
 
 ## Author
 
