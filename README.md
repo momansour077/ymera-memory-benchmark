@@ -4,6 +4,10 @@
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20256693-blue)](https://doi.org/10.5281/zenodo.20256693)
 [![License](https://img.shields.io/badge/License-CC--BY--4.0-green)](https://creativecommons.org/licenses/by/4.0/)
+[![Kaggle](https://img.shields.io/badge/Kaggle-dataset-20BEFF)](https://www.kaggle.com/datasets/mohamed811/ymera-llm-agent-memory-ablation)
+
+📄 **Paper:** https://doi.org/10.5281/zenodo.20256693 ·
+📊 **Dataset:** https://www.kaggle.com/datasets/mohamed811/ymera-llm-agent-memory-ablation
 
 > Mansour, Mohamed Fathy (2026). *Memory Presence Matters, Mechanism Does Not:
 > Evidence from a 21-Agent Organizational Simulation on a Historical Economic
