@@ -1,0 +1,7 @@
+comparison,condition_a,condition_b,n,cohens_d,p_value,protocol,interpretation
+bio_vs_none,bio_inspired_memory,no_memory,78 per arm,5.30,<1e-58,canonical 3-condition (1925-1934),memory presence strongly improves decision quality
+flat_vs_none,flat_retrieval_memory,no_memory,78 per arm,4.94,<1e-58,canonical 3-condition (1925-1934),memory presence strongly improves decision quality
+bio_vs_flat,bio_inspired_memory,flat_retrieval_memory,78 per arm,0.14,0.390,canonical 3-condition (1925-1934),mechanism does NOT separate (not significant)
+memoryon_vs_memoryoff,memory_on,memory_off,212/244,6.28,2.10e-195,full-era paired crisis-continuation,strongest confirmation of memory effect
+fullsystem_on_vs_off,full_system_7_layers_on,memory_off,n/a,3.16,2.52e-120,temporally-guarded full-system,all seven cognitive layers active; still strongly positive
+posthoc_bio_gt_flat,bio_ceo_chro_crisis,flat_ceo_chro_crisis,n/a,1.03,0.022,exploratory post hoc (Welch),narrow bio>flat signal for CEO+CHRO in crisis years only

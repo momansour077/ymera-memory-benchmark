@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the Zenodo preprint below."
+title: "Memory Presence Matters, Mechanism Does Not: Evidence from a 21-Agent Organizational Simulation on a Historical Economic Benchmark"
+authors:
+  - family-names: Mansour
+    given-names: Mohamed Fathy
+    orcid: "https://orcid.org/0009-0005-4360-2567"
+date-released: 2026-05-17
+doi: "10.5281/zenodo.20256693"
+url: "https://doi.org/10.5281/zenodo.20256693"
+license: CC-BY-4.0
+keywords:
+  - multi-agent systems
+  - large language models
+  - agent memory
+  - LLM evaluation
+  - organizational simulation
+  - temporal isolation
