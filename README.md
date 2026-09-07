@@ -1,123 +1,82 @@
-# YMERA — Memory Presence Matters, Mechanism Does Not
+# YMERA — public memory-ablation results
 
-**A 21-agent organizational-simulation benchmark for LLM agent memory.**
+**Summary data, validation, and Python visualization for a published 21-agent study.**
 
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20256693-blue)](https://doi.org/10.5281/zenodo.20256693)
-[![License](https://img.shields.io/badge/License-CC--BY--4.0-green)](https://creativecommons.org/licenses/by/4.0/)
-[![Kaggle](https://img.shields.io/badge/Kaggle-dataset-20BEFF)](https://www.kaggle.com/datasets/mohamed811/ymera-llm-agent-memory-ablation)
+Paper: Mohamed Fathy Mansour (2026), *Memory Presence Matters, Mechanism Does Not:
+Evidence from a 21-Agent Organizational Simulation on a Historical Economic
+Benchmark*. [Zenodo preprint / DOI](https://doi.org/10.5281/zenodo.20256693).
 
-📄 **Paper:** https://doi.org/10.5281/zenodo.20256693 ·
-📊 **Dataset:** https://www.kaggle.com/datasets/mohamed811/ymera-llm-agent-memory-ablation
+The repository makes six reported comparisons easy to inspect. It does **not**
+contain the simulation engine or raw run observations. Running it reproduces the
+summary presentation, not the original experiment or its statistics. Start with
+the [data and reproduction contract](docs/DATA_AND_REPRODUCTION.md).
 
-> Mansour, Mohamed Fathy (2026). *Memory Presence Matters, Mechanism Does Not:
-> Evidence from a 21-Agent Organizational Simulation on a Historical Economic
-> Benchmark.* Zenodo. https://doi.org/10.5281/zenodo.20256693
+## The question and reported findings
 
-This repository is the **public, sanitized writeup** of the YMERA study: the
-paper, the headline results, and a short reproducible analysis of the published
-effect sizes. It contains **no source code, no raw run data, and no credentials** —
-only material already public in the Zenodo preprint (CC-BY-4.0).
+Does giving agents memory help, and does a more complex mechanism improve on flat
+retrieval? The paper reports an advantage for memory presence in its tested setup,
+without a statistically significant aggregate advantage for bio-inspired over
+flat retrieval. A non-significant difference is not proof of equivalence; these
+findings do not generalize automatically to other models or tasks.
 
-![YMERA effect sizes](ymera_effect_sizes.png)
+| Comparison | Reported n | Cohen's d | Reported p |
+| --- | --- | --- | --- |
+| Bio-memory vs no memory | 78/arm | 5.30 | <1e-58 |
+| Flat retrieval vs no memory | 78/arm | 4.94 | <1e-58 |
+| Bio-memory vs flat retrieval | 78/arm | 0.14 | 0.390 |
+| Memory on vs off, crisis-continuation | 212/244 | 6.28 | 2.10e-195 |
+| Full system on vs off | Not supplied in this summary | 3.16 | 2.52e-120 |
+| Bio vs flat, CEO+CHRO crisis years, exploratory post hoc | Not supplied in this summary | 1.03 | 0.022 |
 
-*Memory **presence** produces enormous effect sizes (blue, d ≈ 5–6); memory
-**mechanism** (bio vs. flat, red) does not separate (d = 0.14).*
+Values are transcribed from the paper, not recomputed here. Different protocols
+are not interchangeable independent replications. The post-hoc result is exploratory.
 
----
+![Reported effect sizes](ymera_effect_sizes.png)
 
-## What the study found (in one line)
+## Run the checks
 
-For LLM agents making organizational decisions, **having memory helps enormously,
-but the *type* of memory mechanism (bio-inspired vs. flat retrieval) makes no broad
-difference at 7B scale** — an honest positive *and* negative result.
-
-## Why it matters
-
-- **Evaluation, not anecdote.** A controlled, three-condition ablation with real
-  significance testing and an explicit crisis-continuation protocol — the kind of
-  rigorous, empirical LLM-agent evaluation that AI-data and safety work depends on.
-- **An honest negative result.** The headline is partly a *null* (mechanism doesn't
-  separate) — reported plainly, with limitations stated. That's real science, not
-  hype.
-- **Temporal isolation.** Agents are guarded against using future data they could
-  not have had at decision time — a genuine problem for AI in regulated finance and
-  healthcare.
-
-## Abstract (verbatim from the paper)
-
-> We introduce YMERA, a multi-agent simulation framework in which 21 AI executive
-> agents deliberate over strategic, operational, financial, and risk decisions using a
-> historical economic data surface spanning 1925–2024. In the current benchmarked
-> experiments, we evaluate the 1925–1934 decade and compare three memory conditions:
-> bio-inspired memory, flat retrieval memory, and no memory. In the canonical
-> three-condition run (n=78 per arm), bio-memory and flat retrieval each substantially
-> outperform no memory (d=5.30 and d=4.94, p<1e-58), while remaining statistically
-> indistinguishable from each other (d=0.14, p=0.390). A larger full-era paired
-> confirmation under an explicit crisis-continuation protocol reproduces the same result
-> at greater magnitude (n=212/244, d=6.28, p=2.10e-195)... We conclude that memory
-> presence strongly improves organizational AI decision quality, while bio-inspired
-> mechanism complexity yields no broad advantage over flat retrieval at this model scale.
-
-## Method (summary)
-
-- **YMERA**: 21 AI executive agents (board roles, VPs, a Devil's Advocate) deliberate
-  over strategic / operational / financial / risk decisions on a historical economic
-  data surface spanning **1925–2024**.
-- **Benchmark case study**: the 1925–1934 decade, comparing three memory conditions —
-  **bio-inspired memory**, **flat retrieval**, and **no memory**.
-- Model: Mistral-7B (AWS SageMaker). Temporal-isolation guards. Real-world calibration
-  against the Philadelphia Fed Survey of Professional Forecasters.
-
-## Headline results
-
-| Comparison | n | Cohen's d | p | Protocol |
-|---|---|---|---|---|
-| bio-memory vs. no-memory | 78/arm | **5.30** | <1e-58 | canonical 3-condition |
-| flat-retrieval vs. no-memory | 78/arm | **4.94** | <1e-58 | canonical 3-condition |
-| bio vs. flat retrieval | 78/arm | 0.14 | 0.390 (n.s.) | canonical 3-condition |
-| memory-on vs. memory-off | 212/244 | **6.28** | 2.10e-195 | full-era paired, crisis-continuation |
-| full-system (7 layers) on vs. off | — | **3.16** | 2.52e-120 | temporally-guarded full-system |
-| bio > flat (CEO+CHRO, crisis years) | — | 1.03 | 0.022 (Welch, exploratory) | post hoc |
-
-Full numbers and method are in [`data/ymera_memory_ablation_results.csv`](data/ymera_memory_ablation_results.csv)
-and reproduced by [`notebook/ymera_results_analysis.py`](notebook/ymera_results_analysis.py).
-
-## Reproduce the analysis
+Python 3.11 or newer. The validator and tests use the standard library:
 
 ```bash
-pip install pandas matplotlib
-python notebook/ymera_results_analysis.py
+python3 notebook/validate_summary.py
+python3 -m unittest discover -s tests -v
 ```
 
-(This analysis works on the **published summary results**, not the raw simulation
-runs — the point is a transparent, citable view of the effect sizes in the paper.)
+To generate the chart with pinned plotting dependencies:
 
-## What is NOT here (by design)
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.lock
+MPLBACKEND=Agg python notebook/ymera_results_analysis.py --output /tmp/ymera.png
+```
 
-The YMERA simulation **codebase is deliberately excluded** — it contains operational
-credentials and is kept private. This repo is the scientific record and a clean,
-recruiter/client-facing summary. For the full paper, see the DOI above.
+Expected: six validated comparisons, ten passing tests, a printed summary, and
+a PNG. No API key, model download, or paid inference is needed. Installation needs
+network access. Validation, tests, and plotting passed locally on Python **3.11.15
+and 3.13.13**, macOS arm64, September 5, 2026. GitHub CI is configured for 3.11 and
+3.13; the newly prepared workflow has not yet run on GitHub.
 
-## Skills this demonstrates
+## What the code demonstrates
 
-Directly relevant to LLM evaluation, AI-data, and red-teaming roles:
+- Schema checks, complete cells, and exactly six unique known comparison IDs.
+- Rejection of duplicate/missing comparisons, non-finite effects, invalid p-values,
+  and wrong headers.
+- Decimal parsing preserves very small p-values and distinguishes exact values
+  from upper bounds. Display labels derive from the data.
+- Output-path control and nonzero exit if chart generation fails.
+- Separation of data validation from statistical replication claims.
 
-- **Rigorous LLM evaluation** — controlled multi-condition ablation, effect sizes,
-  significance testing, and an honestly reported null result.
-- **Multi-agent LLM systems** — designing and running a 21-agent deliberation framework.
-- **Experimental hygiene** — temporal-isolation guards; real-world calibration against
-  the Philadelphia Fed Survey of Professional Forecasters.
-- **Reproducible reporting** — public dataset + runnable analysis + citable DOI.
+`data/` contains the CSV; `notebook/` holds the validator and plotting script;
+`tests/` holds failure-path tests. `requirements.lock` pins plotting dependencies
+with Python-version markers where required.
 
-## Author
+## Attribution and scope
 
-**Mohamed Fathy Mansour** — Independent researcher; AI data, LLM evaluation, and
-Arabic linguistic QA.
-ORCID [0009-0005-4360-2567](https://orcid.org/0009-0005-4360-2567) ·
-[LinkedIn](https://linkedin.com/in/mohamedmansour007) ·
-[GitHub](https://github.com/momansour077)
+The underlying paper is a preprint, not a claim of peer-reviewed publication.
+The public CSV is unchanged in this maintenance update. Existing citation and
+license metadata are retained; no new software license is selected.
+See [CITATION.cff](CITATION.cff).
 
-## License
-
-The paper and these summary results are released under **CC-BY-4.0**. Reuse with
-attribution (cite the DOI above).
+The September maintenance changes were prepared with Codex assistance. They
+improve the reporting tools and documentation; they are not new experiments.
