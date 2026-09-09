@@ -54,8 +54,11 @@ MPLBACKEND=Agg python notebook/ymera_results_analysis.py --output /tmp/ymera.png
 Expected: six validated comparisons, ten passing tests, a printed summary, and
 a PNG. No API key, model download, or paid inference is needed. Installation needs
 network access. Validation, tests, and plotting passed locally on Python **3.11.15
-and 3.13.13**, macOS arm64, September 5, 2026. GitHub CI is configured for 3.11 and
-3.13; the newly prepared workflow has not yet run on GitHub.
+and 3.13.13**, macOS arm64, September 5, 2026. Validation and all ten tests were
+rerun successfully on both versions on September 9. The same ten tests ran twice;
+this is not a claim of twenty distinct tests. [GitHub CI passed on September 7](https://github.com/momansour077/ymera-memory-benchmark/actions/runs/34097980560)
+for commit `db17e9ec1a48455893f61e8854819373336bf272`, on Python 3.11 and 3.13.
+That result belongs to that commit; later changes need their own CI run.
 
 ## What the code demonstrates
 
